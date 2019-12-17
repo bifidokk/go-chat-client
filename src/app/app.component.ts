@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     // get messages
-    this.messages$ = this.wsService.on<IMessage[]>(WS.ON.MESSAGES)
+    this.messages$ = this.wsService.on<IMessage[]>(WS.ON.MESSAGES);
     this.messages$.subscribe(console.log);
   }
 

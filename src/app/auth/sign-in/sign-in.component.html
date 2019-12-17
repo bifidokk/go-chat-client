@@ -1,6 +1,6 @@
 <nb-card>
     <nb-card-body>
-        <form aria-labelledby="title">
+        <form aria-labelledby="title" [formGroup]="form" (submit)="join()">
             <div class="form-control-group">
                 <input nbInput
                        fullWidth
@@ -10,9 +10,13 @@
                        placeholder="Email address"
                        fieldSize="large"
                        autofocus
+                       required
+                       formControlName="email"
                 >
+                <app-form-error formControlName="email"></app-form-error>
             </div>
-            <button nbButton
+            <button type="submit"
+                    nbButton
                     fullWidth
                     status="primary"
                     size="large"
