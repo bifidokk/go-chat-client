@@ -13,6 +13,6 @@ export interface WebSocketConfig {
 }
 
 export interface IWsMessage<T> {
-    event: string;
-    data: T;
+    type: string;
+    msg: T;
 }

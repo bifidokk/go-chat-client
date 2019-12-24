@@ -2,9 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { WebsocketService } from '../../websocket';
-import {WS} from '../../websocket.events';
-import {IMessage} from '../../app.component';
-import {Router} from '@angular/router';
+import { WS } from '../../websocket.events';
+import { Router } from '@angular/router';
+import {SignInResponse} from '../../model/sign-in';
 
 @Component({
     selector: 'app-sign-in',
@@ -33,13 +33,18 @@ export class SignInComponent implements OnInit, OnDestroy {
             return;
         }
 
-        const join$ = this.wsService.on<IMessage[]>(WS.ON.JOINED);
+        const join$ = this.wsService.on(WS.ON.JOINED);
         join$.subscribe(
-            () => console.log
+            (response: SignInResponse) => {
+                console.log(response);
+            }
         );
 
-        const email = this.form.value.email;
-        this.wsService.send(WS.SEND.JOIN, email);
+        const request = {
+            email: this.form.value.email
+        };
+
+        this.wsService.send(WS.SEND.JOIN, request);
     }
 
     private createForm(): void {

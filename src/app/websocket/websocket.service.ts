@@ -124,9 +124,10 @@ export class WebsocketService implements IWebsocketService, OnDestroy {
     * */
     public on<T>(event: string): Observable<T> {
         if (event) {
+            console.log(event)
             return this.wsMessages$.pipe(
-                filter((message: IWsMessage<T>) => message.event === event),
-                map((message: IWsMessage<T>) => message.data)
+                filter((message: IWsMessage<T>) => message.type === event),
+                map((message: IWsMessage<T>) => message.msg)
             );
         }
     }
@@ -135,9 +136,9 @@ export class WebsocketService implements IWebsocketService, OnDestroy {
     /*
     * on message to server
     * */
-    public send(event: string, data: any = {}): void {
-        if (event && this.isConnected) {
-            this.websocket$.next(JSON.stringify({ event, data }) as any);
+    public send(type: string, msg: any = {}): void {
+        if (type && this.isConnected) {
+            this.websocket$.next(JSON.stringify({ type, msg }) as any);
         } else {
             console.error('Send error!');
         }
