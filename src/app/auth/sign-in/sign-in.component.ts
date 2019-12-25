@@ -5,6 +5,7 @@ import { WebsocketService } from '../../websocket';
 import { WS } from '../../websocket.events';
 import { Router } from '@angular/router';
 import {SignInResponse} from '../../model/sign-in';
+import {UserService} from '../../services/user.service';
 
 @Component({
     selector: 'app-sign-in',
@@ -18,6 +19,7 @@ export class SignInComponent implements OnInit, OnDestroy {
         private fb: FormBuilder,
         private wsService: WebsocketService,
         private router: Router,
+        private userService: UserService,
     ) {
     }
 
@@ -36,7 +38,9 @@ export class SignInComponent implements OnInit, OnDestroy {
         const join$ = this.wsService.on(WS.ON.JOINED);
         join$.subscribe(
             (response: SignInResponse) => {
-                console.log(response);
+                console.log('123')
+                this.userService.initUser(response);
+                this.router.navigate(['/chat']);
             }
         );
 

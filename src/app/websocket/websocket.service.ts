@@ -124,7 +124,6 @@ export class WebsocketService implements IWebsocketService, OnDestroy {
     * */
     public on<T>(event: string): Observable<T> {
         if (event) {
-            console.log(event)
             return this.wsMessages$.pipe(
                 filter((message: IWsMessage<T>) => message.type === event),
                 map((message: IWsMessage<T>) => message.msg)
