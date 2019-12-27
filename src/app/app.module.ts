@@ -1,17 +1,17 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import {AppRoutingModule, ROUTED_COMPONENTS} from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { WebsocketModule } from './websocket';
-import {NbThemeModule, NbLayoutModule, NbInputModule, NbButtonModule, NbCardModule, NbChatModule} from '@nebular/theme';
-import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { NbButtonModule, NbCardModule, NbChatModule, NbInputModule, NbLayoutModule, NbThemeModule } from '@nebular/theme';
 
-import { FormErrorComponent} from './shared/components/form-error/form-error.component';
-import {UserService} from './services/user.service';
-import {ChatMessageComponent} from './chat/chat-message/chat-message.component';
+import { AppRoutingModule, ROUTED_COMPONENTS } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { ChatMessageComponent } from './chat/chat-message/chat-message.component';
+import { MessageService } from './services/message.service';
+import { UserService } from './services/user.service';
+import { FormErrorComponent } from './shared/components/form-error/form-error.component';
+import { WebsocketModule } from './websocket';
 
 const COMPONENTS = [
     FormErrorComponent,
@@ -45,6 +45,7 @@ const COMPONENTS = [
         COMPONENTS,
     ],
     providers: [
+        MessageService,
         UserService,
     ],
     bootstrap: [AppComponent]

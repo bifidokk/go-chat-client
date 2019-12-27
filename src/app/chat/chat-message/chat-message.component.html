@@ -1,4 +1,10 @@
 <nb-chat class="size-large status-basic" size="large">
+    <nb-chat-message *ngFor="let msg of messages"
+                     [type]="msg.type"
+                     [message]="msg.msg"
+                     [sender]="msg.user"
+                     [date]="msg.date">
+    </nb-chat-message>
     <nb-chat-form [dropFiles]="true">
     </nb-chat-form>
 </nb-chat>
