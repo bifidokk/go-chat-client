@@ -1,6 +1,7 @@
-import {Injectable} from '@angular/core';
-import {SignInResponse} from '../model/sign-in';
-import {User} from '../model/user';
+import { Injectable } from '@angular/core';
+
+import { SignInResponse } from '../model/sign-in';
+import { User } from '../model/user';
 
 @Injectable()
 export class UserService {

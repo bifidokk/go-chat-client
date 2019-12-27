@@ -11,7 +11,7 @@ interface ErrorMessages {
 }
 
 @Component({
-    selector: 'app-form-error',
+    selector: 'chat-form-error',
     template: `
         <ng-container *ngIf="isErrorVisible()">{{firstError}}</ng-container>
     `,
