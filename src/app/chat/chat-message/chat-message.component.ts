@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
 import { Message, MessageService } from '../../services/message.service';
+import {UserService} from '../../services/user.service';
 
 @Component({
     selector: 'chat-message',
@@ -8,19 +9,27 @@ import { Message, MessageService } from '../../services/message.service';
     styleUrls: ['chat-message.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ChatMessageComponent implements OnInit, OnDestroy {
+export class ChatMessageComponent implements OnInit {
     public messages: Message[];
 
     constructor(
         private messageService: MessageService,
         private cdRef: ChangeDetectorRef,
+        private userService: UserService,
     ) {
     }
+
     ngOnInit(): void {
         this.initMessages();
+
+        this.messageService.messageSubject.subscribe(() => {
+            this.cdRef.markForCheck();
+        });
     }
 
-    ngOnDestroy(): void {
+    public sendMessage(event: any): void {
+        const user = this.userService.getUser();
+        this.messageService.sendUserMessage(user, event.message);
     }
 
     private initMessages(): void {

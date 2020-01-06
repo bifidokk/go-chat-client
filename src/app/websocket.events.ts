@@ -1,13 +1,10 @@
 export const WS = {
     ON: {
         JOINED: 'joined',
-        MESSAGES: 'messages',
-        COUNTER: 'counter',
-        UPDATE_TEXTS: 'update-texts'
+        MESSAGE: 'msg',
     },
     SEND: {
         JOIN: 'join',
-        SEND_TEXT: 'set-text',
-        REMOVE_TEXT: 'remove-text'
+        SEND_MSG: 'send-msg',
     }
 };

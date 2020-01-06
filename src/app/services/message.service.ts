@@ -1,10 +1,15 @@
 import { Injectable } from '@angular/core';
+import {Subject} from 'rxjs';
+
+import { User } from '../model/user';
+import { WebsocketService } from '../websocket';
+import {WS} from '../websocket.events';
 
 export interface Message {
     user: string;
     type: Type;
     msg: string;
-    date: Date;
+    date?: Date;
 }
 
 export enum Type {
@@ -13,13 +18,31 @@ export enum Type {
 
 @Injectable()
 export class MessageService {
+    public messageSubject = new Subject();
+
     private messages: Message[] = [];
 
-    public constructor() {
+    public constructor(
+        private wsService: WebsocketService,
+    ) {
+        const messages$ = this.wsService.on(WS.ON.MESSAGE);
+
+        messages$.subscribe(
+            ( message: Message) => {
+                this.messages.push(message);
+                this.messageSubject.next();
+            }
+        );
     }
 
-    public addUserMessage(): void {
+    public sendUserMessage(user: User, msg: string): void {
+        const message: Message = {
+            user: user.email,
+            type: Type.TEXT,
+            msg: msg,
+        };
 
+        this.wsService.send(WS.SEND.SEND_MSG, message);
     }
 
     public addLogMessage(msg: string): void {
