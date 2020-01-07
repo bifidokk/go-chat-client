@@ -6,10 +6,15 @@ import { WebsocketService } from '../websocket';
 import {WS} from '../websocket.events';
 
 export interface Message {
-    user: string;
     type: Type;
     msg: string;
-    date?: Date;
+    time: Date;
+    user: string;
+}
+
+export interface SentMessage {
+    type: Type;
+    msg: string;
 }
 
 export enum Type {
@@ -36,24 +41,12 @@ export class MessageService {
     }
 
     public sendUserMessage(user: User, msg: string): void {
-        const message: Message = {
-            user: user.email,
+        const message: SentMessage = {
             type: Type.TEXT,
             msg: msg,
         };
 
         this.wsService.send(WS.SEND.SEND_MSG, message);
-    }
-
-    public addLogMessage(msg: string): void {
-        const message: Message = {
-            user: 'Admin',
-            type: Type.TEXT,
-            msg: msg,
-            date: new Date(),
-        };
-
-        this.messages.push(message);
     }
 
     public getMessages(): Message[] {

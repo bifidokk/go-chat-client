@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { SignInResponse } from '../../model/sign-in';
-import { MessageService } from '../../services/message.service';
 import { UserService } from '../../services/user.service';
 import { WebsocketService } from '../../websocket';
 import { WS } from '../../websocket.events';
@@ -21,7 +20,6 @@ export class SignInComponent implements OnInit, OnDestroy {
         private wsService: WebsocketService,
         private router: Router,
         private userService: UserService,
-        private messageService: MessageService,
     ) {
     }
 
@@ -41,7 +39,6 @@ export class SignInComponent implements OnInit, OnDestroy {
         join$.subscribe(
             (response: SignInResponse) => {
                 this.userService.initUser(response);
-                this.messageService.addLogMessage(`${response.email} joined.`);
                 this.router.navigate(['/chat']);
             }
         );
