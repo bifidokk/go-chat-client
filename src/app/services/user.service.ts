@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { SignInResponse } from '../model/sign-in';
+import { JoinResponse } from '../model/sign-in';
 import { User } from '../model/user';
 
 @Injectable()
@@ -10,7 +10,7 @@ export class UserService {
     public constructor() {
     }
 
-    public initUser(data: SignInResponse): User {
+    public initUser(data: JoinResponse): User {
         this.user = new User(data.email);
 
         return this.user;

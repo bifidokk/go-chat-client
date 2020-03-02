@@ -1,0 +1,6 @@
+<div>
+    <span>Chat users</span>
+    <div *ngFor="let user of users | async">
+        <span>{{user.email}}</span>
+    </div>
+</div>

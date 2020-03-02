@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import {Subject} from 'rxjs';
+import { Subject } from 'rxjs';
 
 import { User } from '../model/user';
 import { WebsocketService } from '../websocket';
-import {WS} from '../websocket.events';
+import { WS } from '../websocket.events';
 
 export interface Message {
+    email: string;
     type: Type;
     msg: string;
-    time: Date;
-    user: string;
+    date: Date;
 }
 
 export interface SentMessage {
@@ -33,7 +33,7 @@ export class MessageService {
         const messages$ = this.wsService.on(WS.ON.MESSAGE);
 
         messages$.subscribe(
-            ( message: Message) => {
+            (message: Message) => {
                 this.messages.push(message);
                 this.messageSubject.next();
             }

@@ -1,7 +1,4 @@
-export interface SignInRequest {
+export interface JoinResponse {
     email: string;
-}
-
-export interface SignInResponse {
-    email: string;
+    date: Date;
 }
