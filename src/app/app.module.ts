@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { ChatMessageComponent } from './chat/chat-message/chat-message.component';
 import { ChatUsersComponent } from './chat/chat-users/chat-users.component';
 import { ActiveUsersService } from './services/active-users.service';
+import {ChatConfig} from './services/chat.service';
 import { MessageService } from './services/message.service';
 import { UserService } from './services/user.service';
 import { FormErrorComponent } from './shared/components/form-error/form-error.component';
@@ -54,6 +55,7 @@ const COMPONENTS = [
         ActiveUsersService,
         MessageService,
         UserService,
+        ChatConfig,
     ],
     bootstrap: [AppComponent]
 })
