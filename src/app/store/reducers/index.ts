@@ -1,13 +1,16 @@
 import { ActionReducer, ActionReducerMap, createFeatureSelector, createSelector, MetaReducer } from '@ngrx/store';
 
 import * as activeUsers from './active-users.reducer';
+import * as messages from './messages.reducer';
 
 export interface State {
     users: activeUsers.State;
+    messages: messages.State;
 }
 
 export const reducers: ActionReducerMap<State> = {
-    users: activeUsers.reducer
+    users: activeUsers.reducer,
+    messages: messages.reducer,
 };
 
 export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
@@ -27,4 +30,12 @@ export const getUsersState =
 export const getUsers = createSelector(
     getUsersState,
     activeUsers.getUsers,
+);
+
+export const getMessagesState =
+    createFeatureSelector<messages.State>('messages');
+
+export const getMessages = createSelector(
+    getMessagesState,
+    messages.getMessages,
 );

@@ -1,5 +1,5 @@
 <nb-chat class="size-large status-basic" size="large">
-    <nb-chat-message *ngFor="let msg of messages"
+    <nb-chat-message *ngFor="let msg of messages | async"
                      [type]="msg.type"
                      [message]="msg.msg"
                      [sender]="msg.email"
