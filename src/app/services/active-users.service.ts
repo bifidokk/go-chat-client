@@ -7,8 +7,8 @@ import * as messageAction from '../store/actions/messages.actions';
 import * as fromRoot from '../store/reducers';
 import { WebsocketService } from '../websocket';
 import { WS } from '../websocket.events';
-import {ChatConfig} from './chat.service';
 
+import { ChatConfig } from './chat.service';
 import { Message, Type } from './message.service';
 
 

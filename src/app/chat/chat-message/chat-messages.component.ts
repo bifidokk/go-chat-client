@@ -5,11 +5,11 @@ import { Message, MessageService } from '../../services/message.service';
 import { UserService } from '../../services/user.service';
 
 @Component({
-    selector: 'chat-message',
-    templateUrl: 'chat-message.component.html',
-    styleUrls: ['chat-message.component.scss'],
+    selector: 'chat-messages',
+    templateUrl: 'chat-messages.component.html',
+    styleUrls: ['chat-messages.component.scss'],
 })
-export class ChatMessageComponent implements OnInit {
+export class ChatMessagesComponent implements OnInit {
     public messages: Observable<Message[]>;
 
     constructor(

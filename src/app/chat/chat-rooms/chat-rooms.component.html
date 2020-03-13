@@ -1,0 +1,33 @@
+<nb-card size="small">
+    <nb-card-header>
+        Rooms
+    </nb-card-header>
+    <nb-list>
+        <nb-list-item *ngFor="let room of rooms | async">
+            <span>{{room.name}}</span>
+        </nb-list-item>
+    </nb-list>
+</nb-card>
+<nb-card size="small">
+    <nb-card-body>
+        <form [formGroup]="form" (submit)="addRoom()">
+            <div class="form-control-group">
+                <input nbInput
+                       fullWidth
+                       name="name"
+                       id="input-name"
+                       placeholder="Room name"
+                       required
+                       formControlName="name"
+                >
+            </div>
+            <button type="submit"
+                    nbButton
+                    fullWidth
+                    status="primary"
+            >
+                Add
+            </button>
+        </form>
+    </nb-card-body>
+</nb-card>

@@ -1,6 +1,8 @@
-<div>
-    <span>Chat users</span>
-    <div *ngFor="let user of users | async">
-        <span>{{user.email}}</span>
-    </div>
-</div>
+<nb-card size="small">
+    <nb-list>
+        <nb-list-item *ngFor="let user of users | async">
+            <nb-user [name]="user.email" [title]="user.email">
+            </nb-user>
+        </nb-list-item>
+    </nb-list>
+</nb-card>
