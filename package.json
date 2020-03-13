@@ -54,5 +54,8 @@
     "tslint": "~5.15.0",
     "tslint-angular": "^3.0.2",
     "typescript": "~3.5.3"
+  },
+  "resolutions": {
+    "serialize-javascript": "^2.1.1"
   }
 }
