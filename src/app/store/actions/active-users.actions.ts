@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { ChatUser } from '../../services/active-users.service';
+import { ChatUser } from '../../model/user';
 
 export const JOIN = '[Active Users] Join';
 export const LEAVE = '[Active Users] Leave';

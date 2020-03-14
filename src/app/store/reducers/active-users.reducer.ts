@@ -1,4 +1,4 @@
-import { ChatUser } from '../../services/active-users.service';
+import { ChatUser } from '../../model/user';
 import * as userAction from '../actions/active-users.actions';
 
 export interface State {
@@ -7,16 +7,14 @@ export interface State {
 
 export const initialState: State = {
     users: [],
-}
+};
 
 export function reducer(state = initialState, action: userAction.Action) {
     switch (action.type) {
         case userAction.JOIN: {
-            const user: ChatUser = action.payload;
-
             return {
                 ...state,
-                users: [ ...state.users, user]
+                users: [ ...state.users, action.payload]
             };
         }
         case userAction.LEAVE: {

@@ -4,3 +4,12 @@ export class User {
     ) {
     }
 }
+
+export interface ChatUser {
+    email: string;
+    date: Date;
+}
+
+export interface UserList {
+    users: ChatUser[];
+}

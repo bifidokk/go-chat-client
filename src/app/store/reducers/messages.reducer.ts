@@ -1,4 +1,4 @@
-import { Message } from '../../services/message.service';
+import { Message } from '../../model/message';
 import * as messageAction from '../actions/messages.actions';
 
 export interface State {
@@ -12,11 +12,9 @@ export const initialState: State = {
 export function reducer(state = initialState, action: messageAction.Action) {
     switch (action.type) {
         case messageAction.ADD: {
-            const message: Message = action.payload;
-
             return {
                 ...state,
-                messages: [ ...state.messages, message]
+                messages: [ ...state.messages, action.payload]
             };
         }
         default:

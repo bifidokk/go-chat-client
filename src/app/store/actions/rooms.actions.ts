@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { Room } from '../../services/room.service';
+import { Room } from '../../model/room';
 
 export const ADD = '[Rooms] Add';
 export const REMOVE = '[Rooms] Remove';

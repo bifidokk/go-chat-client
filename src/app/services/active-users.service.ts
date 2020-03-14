@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
+import { Message, Type } from '../model/message';
+import { ChatUser, UserList } from '../model/user';
 import * as userAction from '../store/actions/active-users.actions';
 import * as messageAction from '../store/actions/messages.actions';
 import * as fromRoot from '../store/reducers';
@@ -9,19 +11,8 @@ import { WebsocketService } from '../websocket';
 import { WS } from '../websocket.events';
 
 import { ChatConfig } from './chat.service';
-import { Message, Type } from './message.service';
 
-
-export interface ChatUser {
-    email: string;
-    date: Date;
-}
-
-export interface UserList {
-    users: ChatUser[];
-}
-
-type UserAction = 'joined' | 'left';
+type UserChatAction = 'joined' | 'left';
 
 @Injectable()
 export class ActiveUsersService {
@@ -69,7 +60,7 @@ export class ActiveUsersService {
         return this.store.select(fromRoot.getUsers);
     }
 
-    private getActionMessage(user: ChatUser, action: UserAction): Message {
+    private getActionMessage(user: ChatUser, action: UserChatAction): Message {
         return {
             email: this.config.adminName,
             type: Type.TEXT,

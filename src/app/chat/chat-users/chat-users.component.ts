@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { ActiveUsersService, ChatUser } from '../../services/active-users.service';
+import { ChatUser } from '../../model/user';
+import { ActiveUsersService } from '../../services/active-users.service';
 
 @Component({
     selector: 'chat-users',

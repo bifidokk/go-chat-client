@@ -2,22 +2,11 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
+import { AddRoom, Room, RoomList } from '../model/room';
 import * as roomAction from '../store/actions/rooms.actions';
 import * as fromRoot from '../store/reducers';
 import { WebsocketService } from '../websocket';
 import { WS } from '../websocket.events';
-
-export interface Room {
-    name: string;
-}
-
-export interface AddRoom {
-    name: string;
-}
-
-export interface RoomList {
-    rooms: Room[];
-}
 
 @Injectable()
 export class RoomService {

@@ -1,4 +1,4 @@
-import { Room } from '../../services/room.service';
+import { Room } from '../../model/room';
 import * as roomAction from '../actions/rooms.actions';
 
 export interface State {
@@ -12,11 +12,9 @@ export const initialState: State = {
 export function reducer(state = initialState, action: roomAction.Action) {
     switch (action.type) {
         case roomAction.ADD: {
-            const room: Room = action.payload;
-
             return {
                 ...state,
-                rooms: [ ...state.rooms, room]
+                rooms: [ ...state.rooms, action.payload]
             };
         }
         case roomAction.REMOVE: {

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 
-import { Room, RoomService } from '../../services/room.service';
+import { Room } from '../../model/room';
+import { RoomService } from '../../services/room.service';
 
 @Component({
     selector: 'chat-rooms',
