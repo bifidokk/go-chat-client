@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { Message } from '../../model/message';
 import { MessageService } from '../../services/message.service';
@@ -13,6 +14,8 @@ import { UserService } from '../../services/user.service';
 export class ChatMessagesComponent implements OnInit {
     public messages: Observable<Message[]>;
 
+    private ngUnsubscribe = new Subject();
+
     constructor(
         private messageService: MessageService,
         private userService: UserService,
@@ -21,6 +24,12 @@ export class ChatMessagesComponent implements OnInit {
 
     ngOnInit(): void {
         this.initMessages();
+
+        this.userService.userJoined
+            .pipe(takeUntil(this.ngUnsubscribe))
+            .subscribe(() => {
+                this.removeMessages();
+            });
     }
 
     public sendMessage(event: any): void {
@@ -30,5 +39,9 @@ export class ChatMessagesComponent implements OnInit {
 
     private initMessages(): void {
         this.messages = this.messageService.getMessages();
+    }
+
+    private removeMessages(): void {
+        this.messageService.removeMessages();
     }
 }

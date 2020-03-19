@@ -17,6 +17,12 @@ export function reducer(state = initialState, action: messageAction.Action) {
                 messages: [ ...state.messages, action.payload]
             };
         }
+        case messageAction.CLEAR: {
+            return {
+                ...state,
+                messages: []
+            };
+        }
         default:
             return state;
     }

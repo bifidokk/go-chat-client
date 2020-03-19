@@ -36,4 +36,8 @@ export class MessageService {
     public getMessages(): Observable<Message[]> {
         return this.store.select(fromRoot.getMessages);
     }
+
+    public removeMessages(): void {
+        this.store.dispatch(new messageAction.Clear());
+    }
 }

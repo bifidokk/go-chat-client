@@ -4,7 +4,7 @@
     </nb-card-header>
     <nb-list>
         <nb-list-item *ngFor="let room of rooms | async">
-            <span>{{room.name}}</span>
+            <span (click)="joinRoom(room.name)">{{room.name}}</span>
         </nb-list-item>
     </nb-list>
 </nb-card>

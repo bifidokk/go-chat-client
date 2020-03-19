@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { AddRoom, Room, RoomList } from '../model/room';
+import { AddRoom, JoinRoom, Room, RoomList } from '../model/room';
 import * as roomAction from '../store/actions/rooms.actions';
 import * as fromRoot from '../store/reducers';
 import { WebsocketService } from '../websocket';
@@ -41,5 +41,9 @@ export class RoomService {
 
     public addRoom(request: AddRoom): void {
         this.wsService.send(WS.SEND.ADD_ROOM, request);
+    }
+
+    public joinRoom(request: JoinRoom): void {
+        this.wsService.send(WS.SEND.JOIN_ROOM, request);
     }
 }

@@ -13,5 +13,6 @@ export const WS = {
         USERS: 'get-users',
         ROOMS: 'get-rooms',
         ADD_ROOM: 'add-room',
+        JOIN_ROOM: 'join-room',
     }
 };

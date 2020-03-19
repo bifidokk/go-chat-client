@@ -42,12 +42,20 @@ export class ChatRoomsComponent implements OnInit {
         }
 
         const request = {
-            name: this.form.value.name
+            name: this.form.value.name,
         };
 
         this.roomService.addRoom(request);
         this.form.reset({
             name: '',
         });
+    }
+
+    public joinRoom(name: string): void {
+        const request = {
+            name: name,
+        };
+
+        this.roomService.joinRoom(request);
     }
 }

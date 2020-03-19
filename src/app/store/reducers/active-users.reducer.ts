@@ -30,7 +30,7 @@ export function reducer(state = initialState, action: userAction.Action) {
 
             return {
                 ...state,
-                users: [ ...state.users, ...userList]
+                users: userList,
             };
         }
         default:
