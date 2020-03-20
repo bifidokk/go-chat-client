@@ -3,10 +3,12 @@ import * as roomAction from '../actions/rooms.actions';
 
 export interface State {
     rooms: Room[];
+    current: string;
 }
 
 export const initialState: State = {
     rooms: [],
+    current: null,
 };
 
 export function reducer(state = initialState, action: roomAction.Action) {
@@ -33,9 +35,18 @@ export function reducer(state = initialState, action: roomAction.Action) {
                 rooms: [ ...state.rooms, ...roomList]
             };
         }
+        case roomAction.JOIN: {
+            const name = action.payload;
+
+            return {
+                ...state,
+                current: name
+            };
+        }
         default:
             return state;
     }
 }
 
 export const getRooms = (state: State) => state.rooms;
+export const getCurrentRoom = (state: State) => state.current;

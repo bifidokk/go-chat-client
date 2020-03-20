@@ -4,7 +4,13 @@
     </nb-card-header>
     <nb-list>
         <nb-list-item *ngFor="let room of rooms | async">
-            <span (click)="joinRoom(room.name)">{{room.name}}</span>
+            <a
+                class="room-item"
+                (click)="joinRoom(room.name)"
+                [ngClass]="{'current': room.name === (currentRoom | async)}"
+            >
+            {{room.name}}
+            </a>
         </nb-list-item>
     </nb-list>
 </nb-card>

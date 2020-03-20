@@ -50,3 +50,8 @@ export const getRooms = createSelector(
     getRoomsState,
     rooms.getRooms,
 );
+
+export const getCurrentRoom = createSelector(
+    getRoomsState,
+    rooms.getCurrentRoom,
+);

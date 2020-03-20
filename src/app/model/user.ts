@@ -1,5 +1,6 @@
 export class User {
     public constructor(
+        public id: string,
         public email: string,
         public room: string,
     ) {
@@ -7,7 +8,9 @@ export class User {
 }
 
 export interface ChatUser {
+    id: string;
     email: string;
+    room: string;
     date: Date;
 }
 

@@ -5,7 +5,7 @@ import { Room } from '../../model/room';
 export const ADD = '[Rooms] Add';
 export const REMOVE = '[Rooms] Remove';
 export const ADDLIST = '[Rooms] AddList';
-
+export const JOIN = '[Rooms] Join';
 
 export class Add implements Action {
     readonly type = ADD;
@@ -22,4 +22,9 @@ export class AddList implements Action {
     constructor(public payload: Room[]) { }
 }
 
-export type Action = Add | Remove | AddList;
+export class Join implements Action {
+    readonly type = JOIN;
+    constructor(public payload: string) { }
+}
+
+export type Action = Add | Remove | AddList | Join;

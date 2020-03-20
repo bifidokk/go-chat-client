@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { JoinResponse } from '../../model/sign-in';
 import { UserService } from '../../services/user.service';
@@ -15,6 +16,8 @@ import { WS } from '../../websocket.events';
 export class SignInComponent implements OnInit, OnDestroy {
     public form: FormGroup;
 
+    private join$: Subscription;
+
     constructor(
         private fb: FormBuilder,
         private wsService: WebsocketService,
@@ -28,6 +31,7 @@ export class SignInComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
+        this.join$.unsubscribe();
     }
 
     public join(): void {
@@ -35,9 +39,10 @@ export class SignInComponent implements OnInit, OnDestroy {
             return;
         }
 
-        const join$ = this.wsService.on(WS.ON.JOINED);
-        join$.subscribe(
+        const join = this.wsService.on(WS.ON.JOINED);
+        this.join$ = join.subscribe(
             (response: JoinResponse) => {
+                this.join$.unsubscribe();
                 this.userService.initUser(response);
                 this.router.navigate(['/chat']);
             }

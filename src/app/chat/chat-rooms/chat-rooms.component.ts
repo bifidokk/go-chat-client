@@ -12,6 +12,7 @@ import { RoomService } from '../../services/room.service';
 })
 export class ChatRoomsComponent implements OnInit {
     public rooms: Observable<Room[]>;
+    public currentRoom: Observable<string>;
     public form: FormGroup;
 
     constructor(
@@ -28,6 +29,7 @@ export class ChatRoomsComponent implements OnInit {
     private initRooms(): void {
         this.roomService.initRooms();
         this.rooms = this.roomService.getRooms().pipe();
+        this.currentRoom = this.roomService.getCurrentRoom().pipe();
     }
 
     private createForm(): void {

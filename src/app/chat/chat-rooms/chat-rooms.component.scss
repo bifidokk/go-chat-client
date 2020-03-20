@@ -1,0 +1,8 @@
+.room-item {
+  cursor: pointer;
+  color: #fff;
+}
+
+.current:before {
+  content: "► "
+}

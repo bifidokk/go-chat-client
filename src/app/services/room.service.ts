@@ -46,4 +46,8 @@ export class RoomService {
     public joinRoom(request: JoinRoom): void {
         this.wsService.send(WS.SEND.JOIN_ROOM, request);
     }
+
+    public getCurrentRoom(): Observable<string> {
+        return this.store.select(fromRoot.getCurrentRoom);
+    }
 }

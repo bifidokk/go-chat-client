@@ -31,7 +31,7 @@ export class ActiveUsersService {
 
         joined$.subscribe(
             (user: ChatUser) => {
-                if (user.email === this.currentUser.email) {
+                if (this.userService.isCurrentUser(user.id)) {
                     return;
                 }
 

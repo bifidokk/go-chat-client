@@ -22,7 +22,7 @@ export function reducer(state = initialState, action: userAction.Action) {
 
             return {
                 ...state,
-                users: state.users.filter((user: ChatUser) => chatUser.email !== user.email),
+                users: state.users.filter((user: ChatUser) => chatUser.id !== user.id),
             };
         }
         case userAction.ADDLIST: {
