@@ -29,7 +29,7 @@
     "hammerjs": "^2.0.8",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
-    "ws": "^7.4.6",
+    "ws": "^7.5.10",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
